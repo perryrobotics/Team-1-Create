@@ -2,6 +2,8 @@
 import os, sys
 from wallaby import *
 
+THRESH = 2700
+
 #Created Wednesday, February 6th, 2019. Creators: Kade Little, Soham Kinkhbwala, and Aditya Patra.
 
 #Function: backward
@@ -27,7 +29,7 @@ def backward(speed, mm):
 def forward (speed, mm):
     
 	set_create_distance(0)
-	create_drive_straight(-speed)
+	create_drive_direct(-speed, -speed)
 	while(get_create_distance() > -mm):
 		pass
  	create_drive_straight(0)
@@ -71,3 +73,10 @@ def turn_CCW_to_black(speed, port, thresh):
 	while(analog(port) <= thresh):
 		pass
  	create_spin_CCW(0)
+            
+def drive_to_bump(speed):
+	create_drive_straight(speed)
+	while get_create_lbump()== 0 and get_create_rbump()==0:
+		pass
+ 	create_drive_direct(0,0)
+      
