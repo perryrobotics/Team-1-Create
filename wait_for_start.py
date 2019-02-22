@@ -1,0 +1,27 @@
+#!/usr/bin/python
+import os, sys
+from wallaby import *
+
+def wait_for_start(port):      
+	print("light off.  Press A when ready!")
+ 	msleep(2000)
+  	while a_button()==0:
+		off = analog(port)
+		print ("OFF: ",analog(port) )
+ 	print ("LIGHT OFF VALUE: ", off)
+ 	           
+	print("light on.  Press B when ready!")
+ 	msleep(2000)
+  	while b_button()==0:
+		on = analog(port)
+		print ("ON: ",analog(port) )
+ 	print ("LIGHT ON VALUE: ", on)
+
+	print ("TURN LIGHT OFF NOW!!!! PRESS C WHEN READY")
+  	while c_button()==0:
+		pass
+   
+	thresh = (off -on)/2
+	while analog(port) > thresh:
+		print ("WAITING FOR LIGHT!!!")
+		pass

@@ -3,6 +3,7 @@ import os, sys
 from wallaby import *
 from movement import *
 from effectors import *
+from wait_for_start import *
 
 LIGHT_SENSOR = 1
     
@@ -13,35 +14,7 @@ def main():
 
   	#msleep(5000)
  	#wait_for_light(LIGHT_SENSOR)
-        
-	print("light off.  Press A when ready!")
- 	msleep(2000)
-  	while a_button()==0:
-		off = analog(LIGHT_SENSOR)
-		print ("OFF: ",analog(LIGHT_SENSOR) )
- 	print ("LIGHT OFF VALUE: ", off)
- 	           
-	print("light on.  Press B when ready!")
- 	msleep(2000)
-  	while b_button()==0:
-		on = analog(LIGHT_SENSOR)
-		print ("ON: ",analog(LIGHT_SENSOR) )
- 	print ("LIGHT ON VALUE: ", on)
-
-	print ("TURN LIGHT OFF NOW!!!! PRESS C WHEN READY")
-  	while c_button()==0:
-		pass
-   
-	thresh = (off -on)/2
-	while analog(LIGHT_SENSOR) > thresh:
-		print ("WAITING FOR LIGHT!!!")
-		pass
-
-        
- 
-	
-        
- 	
+ 	wait_for_start(LIGHT_SENSOR)
  	shut_down_in(120)
   	enable_servos()
  	arm_back(50)
