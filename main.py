@@ -4,13 +4,48 @@ from wallaby import *
 from movement import *
 from effectors import *
 
+LIGHT_SENSOR = 1
+    
 def main():  
   	create_connect()
+
+  	#print "Connected to create!!"
+
+  	#msleep(5000)
+ 	#wait_for_light(LIGHT_SENSOR)
+        
+	print("light off.  Press A when ready!")
+ 	msleep(2000)
+  	while a_button()==0:
+		off = analog(LIGHT_SENSOR)
+		print ("OFF: ",analog(LIGHT_SENSOR) )
+ 	print ("LIGHT OFF VALUE: ", off)
+ 	           
+	print("light on.  Press B when ready!")
+ 	msleep(2000)
+  	while b_button()==0:
+		on = analog(LIGHT_SENSOR)
+		print ("ON: ",analog(LIGHT_SENSOR) )
+ 	print ("LIGHT ON VALUE: ", on)
+
+	print ("TURN LIGHT OFF NOW!!!! PRESS C WHEN READY")
+  	while c_button()==0:
+		pass
+   
+	thresh = (off -on)/2
+	while analog(LIGHT_SENSOR) > thresh:
+		print ("WAITING FOR LIGHT!!!")
+		pass
+
+        
+ 
+	
+        
+ 	
+ 	shut_down_in(120)
   	enable_servos()
-  	print "Connected to create!!"
-  	arm_back(50)
+ 	arm_back(50)
    	claw_open(50)
-  	msleep(15000)
    	#Get first supply stack!
    	arm_down(50)
    	forward(100, 135)
