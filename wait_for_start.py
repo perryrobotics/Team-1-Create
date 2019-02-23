@@ -4,16 +4,15 @@ from wallaby import *
 
 def wait_for_start(port):      
 	print("LIGHT OFF NOW!!!.  Press A when ready!")
- 	msleep(2000)
   	while not a_button():
 		off = analog(port)
 		print ("OFF: ",analog(port) )
  	print ("LIGHT OFF VALUE: ", off)
+ 	while a_button():
+		pass
 	if off <1500:
 		print ("BAD CALIBRATION!!!  DO NOT RUN!!!")
 		return False
- 	while a_button():
-		pass
 	
 	print("LIGHT ON NOW!!!.  Press B when ready!")
   	while not b_button():
@@ -39,4 +38,4 @@ def wait_for_start(port):
 	print("THRESH: ", thresh)
 	while analog(port) > thresh:
 		print ("WAITING FOR LIGHT!!!")
-		pass
+	return True
