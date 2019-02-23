@@ -14,7 +14,7 @@ def wait_for_start(port):
 		return False
 	
 	#NOW CLIBRATE WITH LIGHT ON
-	print("LIGHT ON NOW!!!.  Press B when ready!")
+	print("LIGHT ON NOW!!!.  Press B when light is off!")
   	while not b_button():
 		on = analog(port)
 		#print ("ON: ",analog(port) )
