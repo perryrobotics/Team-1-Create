@@ -29,7 +29,7 @@ def wait_for_start(port):
    	#NOW CALCULATE THE THRESHHOLD VALUE 
 	thresh = (off + on)/2
 	if thresh < 1000:
-		print "BAD CALIBRATION!!!!"
+		print "BAD CALIBRATION!!!!DO NOT RUN!!!"
 		return False
 	
 	print("GOOD CALIBRATION!  LETS GO!!!")
