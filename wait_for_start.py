@@ -2,18 +2,18 @@
 import os, sys
 from wallaby import *
 
-def wait_for_start(port):      
+def wait_for_start(port):   
+	#START CALIBRATION WITH LIGHT OFF
 	print("LIGHT OFF NOW!!!.  Press A when ready!")
   	while not a_button():
 		off = analog(port)
 		print ("OFF: ",analog(port) )
  	print ("LIGHT OFF VALUE: ", off)
- 	while a_button():
-		pass
 	if off <1500:
 		print ("BAD CALIBRATION!!!  DO NOT RUN!!!")
 		return False
 	
+	#NOW CLIBRATE WITH LIGHT ON
 	print("LIGHT ON NOW!!!.  Press B when ready!")
   	while not b_button():
 		on = analog(port)
@@ -26,7 +26,7 @@ def wait_for_start(port):
 	print ("TURN LIGHT OFF NOW!!!! PRESS C WHEN READY")
   	while c_button()==0:
 		pass
-   
+   	#NOW CALCULATE THE THRESHHOLD VALUE 
 	thresh = (off + on)/2
 	if thresh < 1000:
 		print "BAD CALIBRATION!!!!"
