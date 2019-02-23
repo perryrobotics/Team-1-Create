@@ -14,17 +14,24 @@ def main():
 
   	#msleep(5000)
  	#wait_for_light(LIGHT_SENSOR)
- 	wait_for_start(LIGHT_SENSOR)
+        
+ 	if wait_for_start(LIGHT_SENSOR) == False:
+		print("BAD CALIBRATION!!!")
+		return False
+        
  	shut_down_in(120)
   	enable_servos()
  	arm_back(50)
    	claw_open(50)
+  	CCW(50, 35)
+
    	#Get first supply stack!
    	arm_down(50)
    	forward(100, 135)
    	claw_close(50)
    	arm_up(50)
-   	backward(100,90)
+ 	forward(100,100) #get out of the way of the wallaby
+   	backward(100,190)
    	CW(100,90)
    	backward(100, 100)
    	arm_down(50)
