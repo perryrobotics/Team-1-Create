@@ -1,8 +1,9 @@
 #!/usr/bin/python
 import os, sys
 from wallaby import *
+from constants import *
 
-THRESH = 2700
+
 
 #Created Wednesday, February 6th, 2019. Creators: Kade Little, Soham Kinkhbwala, and Aditya Patra.
 

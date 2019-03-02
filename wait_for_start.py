@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import os, sys
 from wallaby import *
+from constants import *
 
 def wait_for_start(port):   
 	#START CALIBRATION WITH LIGHT OFF
